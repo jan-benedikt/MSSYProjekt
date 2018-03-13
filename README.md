@@ -38,16 +38,17 @@ vsechny nastaveni pujdou do config.h
 
 .
  * [Brana](./Brana)
- * [hal](./Brana/hal)
-   * [atmega256rfr2](./Brana/atmega256rfr2/file21.ext)
- * [nwk](./Brana/nwk)
-   * [inc](./Brana/nwk/inc)
-   * [src](./Brana/nwk/src)
- * [phy](./Brana/phy)
- * [sys](./Brana/sys)
-   * [inc](./Brana/sys/inc)
-   * [src](./Brana/sys/src)
- * [config.h](./Brana/config.h)
+   * [hal](./Brana/hal)
+     * [atmega256rfr2](./Brana/atmega256rfr2)
+   * [nwk](./Brana/nwk)
+     * [inc](./Brana/nwk/inc)
+     * [src](./Brana/nwk/src)
+   * [phy](./Brana/phy)
+     * [atmegarfr2](./Brana/phy/atmegarfr2)
+   * [sys](./Brana/sys)
+     * [inc](./Brana/sys/inc)
+     * [src](./Brana/sys/src)
+   * [config.h](./Brana/config.h)
 `
 
 
