@@ -39,7 +39,7 @@ vsechny nastaveni pujdou do config.h
 .
  * [Brana](./Brana)
    * [hal](./Brana/hal)
-     * [atmega256rfr2](./Brana/atmega256rfr2)
+     * [atmega256rfr2](./Brana/hal/atmega256rfr2)
    * [nwk](./Brana/nwk)
      * [inc](./Brana/nwk/inc)
      * [src](./Brana/nwk/src)
