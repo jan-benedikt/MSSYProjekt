@@ -1,3 +1,4 @@
+
 # MSSY
 
 ### úkoly
@@ -24,17 +25,17 @@ Required Definitions
 - import
 sys ,hal, nwk, phy -> do rootu
 
+include paths
 
-    include paths
-    sys/inc
-    phy/atmegarfr2/inc
-    hal/atmegarf2r/inc
-    nwk/inc
-    hal/driver/atmega256rfr2
+	sys/inc
+	phy/atmegarfr2/inc
+	hal/atmegarf2r/inc
+	nwk/inc
+	hal/driver/atmega256rfr2
 	..
 
 
-vsechny nastaveni pujdou do config.h
+vsechny nastaveni pujdou souboru  do [config.h](./Brana/config.h)
 
 .
  * [Brana](./Brana)
@@ -51,8 +52,12 @@ vsechny nastaveni pujdou do config.h
    * [config.h](./Brana/config.h)
 `
 
+### nase DHCP
 
-app_addr ->1
+![Alt text](./podklady/diagramy/dhcp.png)
+
+
+app_addr -> nastavení adresy 
 
 
 NWK_openEndpoint (cislo socketu, callback funkce po prijeti dat)
