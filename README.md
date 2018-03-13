@@ -37,17 +37,17 @@ sys ,hal, nwk, phy -> do rootu
 vsechny nastaveni pujdou do config.h
 
 .
- * [LVMdemo](./LVMdemo)
- * [hal](./hal)
-   * [atmega256rfr2](./atmega256rfr2/file21.ext)
- * [nwk](./nwk)
-   * [inc](./nwk/inc)
-   * [src](./nwk/src)
- * [phy](./phy)
- * [sys](./sys)
-   * [inc](./sys/inc)
-   * [src](./sys/src)
- * [config.h](./config.h)
+ * [Brana](./Brana)
+ * [hal](./Brana/hal)
+   * [atmega256rfr2](./Brana/atmega256rfr2/file21.ext)
+ * [nwk](./Brana/nwk)
+   * [inc](./Brana/nwk/inc)
+   * [src](./Brana/nwk/src)
+ * [phy](./Brana/phy)
+ * [sys](./Brana/sys)
+   * [inc](./Brana/sys/inc)
+   * [src](./Brana/sys/src)
+ * [config.h](./Brana/config.h)
 `
 
 
