@@ -1,4 +1,5 @@
-#MSSY
+# MSSY
+
 ### úkoly
 - connect (Dynamicke přidělování adres)
 - discovery (Broadcastem [0xFFF])
@@ -47,6 +48,8 @@ vsechny nastaveni pujdou do config.h
    * [src](./sys/src)
  * [config.h](./config.h)
 `
+
+
 app_addr ->1
 
 
