@@ -9,7 +9,8 @@
 M:\MSSY\Software\lightweight_mesh_stack_v1.2.1
 
 1. udelat definice 
-Atmel-42028-Lightweight-Mesh-Developer-Guide_Application-Note_AVR2130
+[LVM Developer-Guide_Application]{./podklady/Atmel-42028-Lightweight-Mesh-Developer-Guide_Application-Note_AVR2130.pdf}
+
 strana 7
 Required Definitions
 
