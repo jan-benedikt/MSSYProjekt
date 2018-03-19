@@ -33,142 +33,74 @@ typedef enum AppState_t
 	APP_STATE_IDLE,
 } AppState_t;
 
-/*- Prototypes -------------------------------------------------------------*/
-static void appSendData(void);
-
-/*- Variables --------------------------------------------------------------*/
-static AppState_t appState = APP_STATE_INITIAL;
-static SYS_Timer_t appTimer;
-static NWK_DataReq_t appDataReq;
-static bool appDataReqBusy = false;
-static uint8_t appDataReqBuffer[APP_BUFFER_SIZE];
-static uint8_t appUartBuffer[APP_BUFFER_SIZE];
-static uint8_t appUartBufferPtr = 0;
-
-/*- Implementations --------------------------------------------------------*/
-
-/*************************************************************************//**
-*****************************************************************************/
-static void appDataConf(NWK_DataReq_t *req)
+typedef struct NWK_DataInd_t
 {
-appDataReqBusy = false;
-(void)req;
+	uint16_t srcAddr;
+	uint16_t dstAddr;
+	uint8_t srcEndpoint;
+	uint8_t dstEndpoint;
+	uint8_t options;
+	uint8_t *data;
+	uint8_t size;
+	uint8_t lqi;
+	int8_t rssi;
+} NWK_DataInd_t;
+
+typedef struct NWK_DataReq_t
+{
+	// service fields
+	void *next;
+	void *frame;
+	uint8_t state;
+	// request parameters
+	uint16_t dstAddr;
+	uint8_t dstEndpoint;
+	uint8_t srcEndpoint;
+	uint8_t options;
+	#ifdef NWK_ENABLE_MULTICAST
+	uint8_t memberRadius;
+	uint8_t nonMemberRadius;
+	#endif
+	uint8_t *data;
+	uint8_t size;
+	void (*confirm)(struct NWK_DataReq_t *req);
+	// confirmation parameters
+	uint8_t status;
+	uint8_t control;
+} NWK_DataReq_t;
+
+//Registrace endpointu
+NWK_OpenEndpoint(APP_ENDPOINT, funkceObluhy);
+
+//obsluha prichozich ramcu
+static bool funkceObluhy (NWK_DataInd_t *ind)
+{
+	// obsluha
+	return true;
 }
 
-/*************************************************************************//**
-*****************************************************************************/
-static void appSendData(void)
-{
-if (appDataReqBusy || 0 == appUartBufferPtr)
-return;
-
-memcpy(appDataReqBuffer, appUartBuffer, appUartBufferPtr);
-
-appDataReq.dstAddr = 1-APP_ADDR;
-appDataReq.dstEndpoint = APP_ENDPOINT;
-appDataReq.srcEndpoint = APP_ENDPOINT;
-appDataReq.options = NWK_OPT_ENABLE_SECURITY;
-appDataReq.data = appDataReqBuffer;
-appDataReq.size = appUartBufferPtr;
-appDataReq.confirm = appDataConf;
-NWK_DataReq(&appDataReq);
-
-appUartBufferPtr = 0;
-appDataReqBusy = true;
-}
-
-/*************************************************************************//**
-*****************************************************************************/
-void HAL_UartBytesReceived(uint16_t bytes)
-{
-for (uint16_t i = 0; i < bytes; i++)
-{
-uint8_t byte = HAL_UartReadByte();
-
-if (appUartBufferPtr == sizeof(appUartBuffer))
-appSendData();
-
-if (appUartBufferPtr < sizeof(appUartBuffer))
-appUartBuffer[appUartBufferPtr++] = byte;
-}
-
-SYS_TimerStop(&appTimer);
-SYS_TimerStart(&appTimer);
-}
-
-/*************************************************************************//**
-*****************************************************************************/
-static void appTimerHandler(SYS_Timer_t *timer)
-{
-appSendData();
-(void)timer;
-}
-
-/*************************************************************************//**
-*****************************************************************************/
-static bool appDataInd(NWK_DataInd_t *ind)
-{
-for (uint8_t i = 0; i < ind->size; i++)
-HAL_UartWriteByte(ind->data[i]);
-return true;
-}
-
-/*************************************************************************//**
-*****************************************************************************/
-static void appInit(void)
-{
-NWK_SetAddr(APP_ADDR);
-NWK_SetPanId(APP_PANID);
-PHY_SetChannel(APP_CHANNEL);
-#ifdef PHY_AT86RF212
-PHY_SetBand(APP_BAND);
-PHY_SetModulation(APP_MODULATION);
-#endif
-PHY_SetRxState(true);
-
-NWK_OpenEndpoint(APP_ENDPOINT, appDataInd);
-
-HAL_BoardInit();
-
-appTimer.interval = APP_FLUSH_TIMER_INTERVAL;
-appTimer.mode = SYS_TIMER_INTERVAL_MODE;
-appTimer.handler = appTimerHandler;
-}
-
-/*************************************************************************//**
-*****************************************************************************/
 static void APP_TaskHandler(void)
 {
-switch (appState)
-{
-case APP_STATE_INITIAL:
-{
-appInit();
-appState = APP_STATE_IDLE;
-} break;
-
-case APP_STATE_IDLE:
-break;
-
-default:
-break;
-}
-}
-
-/*************************************************************************//**
-*****************************************************************************/
-int main(void)
-{
-SYS_Init();
-HAL_UartInit(9600);
-
-
-	while (1)
+	switch (AppState_t)
 	{
-		SYS_TaskHandler();
-		HAL_UartTaskHandler();
-		APP_TaskHandler();
+		case APP_STATE_INITIAL:
+		{
+			appInit();
+			appState = APP_STATE_IDLE;
+		} break;
+		case APP_STATE_IDLE:
+		break;
+		default:
+		break;
 	}
 }
 
-
+int main(void)
+{
+	SYS_Init();
+	while (1)
+	{
+		SYS_TaskHandler();
+		APP_TaskHandler();
+	}
+}
