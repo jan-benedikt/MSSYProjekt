@@ -1,3 +1,5 @@
+
+
 # MSSY
 
 ### úkoly
@@ -6,9 +8,13 @@
 
 
 ## Instalace/config
-M:\MSSY\Software\lightweight_mesh_stack_v1.2.1
+Založíme projekt
+ Stáhneme [lightweight_mesh_stack_v1.2.1](./podklady/lightweight_mesh_stack_v1.2.1) 
 
-1. udelat definice 
+- vykopírujeme z [lightweight_mesh_stack_v1.2.1](./podklady/lightweight_mesh_stack_v1.2.1) 
+	sys ,hal, nwk, phy -> do rootu projektu
+
+1. udelame definice (project -> properties -> symbols)
  * [LVM Developer-Guide_Application](./podklady/Atmel-42028-Lightweight-Mesh-Developer-Guide_Application-Note_AVR2130.pdf)
 
 strana 7
@@ -18,23 +24,18 @@ Required Definitions
     PHY_ATMEGARFR2
     HAL_ATMEGA256RFR2
 
+1. nadefinujeme cesty (project -> properties -> include paths)
+	
+
+        sys/inc
+	    phy/atmegarfr2/inc
+	    hal/atmegarf2r/inc
+	    nwk/inc
+	    hal/driver/atmega256rfr2
+	    ..
 
 
-
-- import
-sys ,hal, nwk, phy -> do rootu
-
-
-    include paths
-    sys/inc
-    phy/atmegarfr2/inc
-    hal/atmegarf2r/inc
-    nwk/inc
-    hal/driver/atmega256rfr2
-	..
-
-
-vsechny nastaveni pujdou do config.h
+vsechny nastaveni pujdou souboru  do [config.h](./Brana/config.h)
 
 .
  * [Brana](./Brana)
@@ -51,8 +52,12 @@ vsechny nastaveni pujdou do config.h
    * [config.h](./Brana/config.h)
 `
 
+### nase DHCP
 
-app_addr ->1
+![Alt text](./podklady/diagramy/dhcp.png)
+
+
+app_addr -> nastavení adresy 
 
 
 NWK_openEndpoint (cislo socketu, callback funkce po prijeti dat)
