@@ -160,15 +160,15 @@ break;
 int main(void)
 {
 SYS_Init();
-HAL_UartInit(38400);
+HAL_UartInit(9600);
 
 
-while (1)
-{
-SYS_TaskHandler();
-HAL_UartTaskHandler();
-APP_TaskHandler();
-}
+	while (1)
+	{
+		SYS_TaskHandler();
+		HAL_UartTaskHandler();
+		APP_TaskHandler();
+	}
 }
 
 

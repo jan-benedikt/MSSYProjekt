@@ -1005,9 +1005,9 @@ int main(void)
 {
 SYS_Init();
      5b6:	0e 94 27 0c 	call	0x184e	; 0x184e <SYS_Init>
-HAL_UartInit(38400);
-     5ba:	60 e0       	ldi	r22, 0x00	; 0
-     5bc:	76 e9       	ldi	r23, 0x96	; 150
+HAL_UartInit(9600);
+     5ba:	60 e8       	ldi	r22, 0x80	; 128
+     5bc:	75 e2       	ldi	r23, 0x25	; 37
      5be:	80 e0       	ldi	r24, 0x00	; 0
      5c0:	90 e0       	ldi	r25, 0x00	; 0
      5c2:	22 de       	rcall	.-956    	; 0x208 <HAL_UartInit>
@@ -1030,14 +1030,14 @@ appTimer.mode = SYS_TIMER_INTERVAL_MODE;
 appTimer.handler = appTimerHandler;
      5d6:	0d e8       	ldi	r16, 0x8D	; 141
      5d8:	12 e0       	ldi	r17, 0x02	; 2
-HAL_UartInit(38400);
+HAL_UartInit(9600);
 
 
-while (1)
-{
-SYS_TaskHandler();
+	while (1)
+	{
+		SYS_TaskHandler();
      5da:	0e 94 2e 0c 	call	0x185c	; 0x185c <SYS_TaskHandler>
-HAL_UartTaskHandler();
+		HAL_UartTaskHandler();
      5de:	28 df       	rcall	.-432    	; 0x430 <HAL_UartTaskHandler>
 
 /*************************************************************************//**
