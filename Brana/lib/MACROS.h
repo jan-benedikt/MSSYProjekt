@@ -1,19 +1,18 @@
 /*
- * makra.h
+ * MACROS.h
  *
- * Created: 14.2.2018 9:54:45
- *  Author: Krajsa
+ * Created: 12.2.2018 16:21:50
+ *  Author: Benedikt
  */ 
 
-#include <avr/io.h>
 
-#ifndef MAKRA_H_
-#define MAKRA_H_
-//Bitove operace
-#define sbi(var, mask)  ((var) |= (uint8_t)(1 << mask))
-#define cbi(var, mask)  ((var) &= (uint8_t)~(1 << mask))
-#define tbi(var,mask)	(var & (1 << mask) )
-#define xbi(var,mask)	((var)^=(uint8_t)(1 << mask))
+#ifndef MACROS_H_
+#define MACROS_H_
+
+#define sbi(var, mask) ((var) |= (uint8_t)(1 << mask))
+#define cbi(var, mask) ((var) &= (uint8_t)~(1 << mask)) //
+#define tbi(var, mask) ((var) &(1 << mask)) // Test bit
+#define xbi(var, mask) ((var)^=(uint8_t)(1<<mask))
 
 //hardware
 #define LED0_PIN B,4
@@ -32,7 +31,4 @@
 #define LED3OFF sbi(PORTE,3)
 #define LED3CHANGE xbi(PORTE,3)
 
-
-
-
-#endif /* MAKRA_H_ */
+#endif /* MACROS_H_ */

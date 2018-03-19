@@ -5,3 +5,6 @@
  *  Author: Benedikt
  */ 
 
+void receive(){
+	
+}

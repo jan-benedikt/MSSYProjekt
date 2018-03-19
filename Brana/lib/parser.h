@@ -10,7 +10,7 @@
 #define PARSER_H_
 
 
-
+void receive();
 
 
 #endif /* PARSER_H_ */
