@@ -30,7 +30,7 @@
 
 const char* ssid = "CreapyPhone";
 const char* password = "spidermanthemoss";
-const char* mqtt_server = "147.229.148.14";
+const char* mqtt_server = "trafosoft.cz";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -42,29 +42,28 @@ void setup_wifi() {
 
   delay(10);
   // We start by connecting to a WiFi network
-  Serial.println();
-  Serial.print("Connecting to ");
+  Serial.println("#");
+  Serial.print("#"Connecting to ");
   Serial.println(ssid);
 
   WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    Serial.print(".");
   }
 
   randomSeed(micros());
 
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
+  Serial.println("#");
+  Serial.println("#WiFi connected");
+  Serial.println("#IP address: ");
+  Serial.print("#");
   Serial.println(WiFi.localIP());
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
-  Serial.print("Message arrived [");
   Serial.print(topic);
-  Serial.print("] ");
+  Serial.print("|");
   for (int i = 0; i < length; i++) {
     Serial.print((char)payload[i]);
   }
@@ -84,7 +83,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
+    Serial.print("#Attempting MQTT connection...");
     // Create a random client ID
     String clientId = "ESP8266Client-";
     clientId += String(random(0xffff), HEX);
@@ -94,11 +93,11 @@ void reconnect() {
       // Once connected, publish an announcement...
       client.publish("outTopic", "hello world");
       // ... and resubscribe
-      client.subscribe("inTopic");
+      client.subscribe("/#");
     } else {
-      Serial.print("failed, rc=");
+      Serial.print("#failed, rc=");
       Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
+      Serial.println("# try again in 5 seconds");
       // Wait 5 seconds before retrying
       delay(5000);
     }
@@ -121,12 +120,12 @@ void loop() {
   client.loop();
 
   long now = millis();
-  if (now - lastMsg > 2000) {
+  if (now - lastMsg > 20000) {
     lastMsg = now;
     ++value;
-    snprintf (msg, 75, "toto je mqtt test z esp8266" , value);
-    Serial.print("Publish message: ");
-    Serial.println(msg);
-    client.publish("iAuto/1/text1", msg);
+    snprintf (msg, 75, "test mssy jede" , value);
+    //Serial.print("Publish message: ");
+    //Serial.println(msg);
+    client.publish("/mssy/test", msg);
   }
 }
