@@ -1,5 +1,5 @@
 /*
- * tabulka_zarizeni.h
+ * devices_table.h
  *
  * Created: 21.3.2018 15:26:30
  *  Author: Student
