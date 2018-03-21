@@ -2,7 +2,7 @@
  * global.h
  *
  * Created: 21.3.2018 15:33:15
- *  Author: Student
+ *  Author: Jaroslav Hájek
  */
 
 
@@ -44,13 +44,8 @@ typedef struct device
 	int count_sensors=0;
 } device;
 
-AddSensorToDevice(sensor,device){
-device[device->count_sensor]=sensor;
-device->count_sensor++;
-}
 
-
-
+int AddSensorToDevice(sensor sen,device dev);
 
 
 

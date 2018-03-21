@@ -18,6 +18,7 @@ devices_table BIG_TABLE;
 int AddDeviceToTable(device dev){
 if (BIG_TABLE->devices_count<255)
 	{
+
 		BIG_TABLE[BIG_TABLE->devices_count]=dev;
 		BIG_TABLE->devices_count++;
 		return 0;
@@ -25,6 +26,28 @@ if (BIG_TABLE->devices_count<255)
 	else
 	{
 		return 1;
+	}
+}
+
+/**
+ * [try found free addres for device]
+ * @method FindFreeAddress
+ * @return [uint8_t addres]
+ */
+uint8_t FindFreeAddress(){
+	for (int a = 0;a<255;a++)
+	{
+		for(int i =0;i<BIG_TABLE->devices_count;i++)
+		{
+			int f = 1;
+			if (BIG_TABLE[i]->address==a)
+				{
+					f=0;
+				}
+		}
+		if (f==1){
+			return a;
+		}
 	}
 }
 

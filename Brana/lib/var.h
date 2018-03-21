@@ -3,22 +3,11 @@
  *
  * Created: 21.3.2018 15:08:25
  *  Author: Student
- */ 
+ */
 
 
 #ifndef VAR_H_
 #define VAR_H_
-
-
-
-
-
-
-
-
-
-
-
 
 typedef enum AppState_t
 {

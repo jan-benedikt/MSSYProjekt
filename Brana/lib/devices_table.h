@@ -19,7 +19,7 @@ int AddDeviceToTable(device);
 int FindDevice(uint8_t address);
 device GetDevice(uint8_t address);
 int RemoveDeviceFromTable(device);
-
+uint8_t FindFreeAddress();
 
 
 
