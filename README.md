@@ -2,6 +2,10 @@
 
 # MSSY
 
+### Generating PubKey
+	ssh-keygen -t rsa -b 4096 -C "benedikthonza@gmail.com"
+	ssh-keygen -t rsa -b 4096 -C "hajda14@gmail.com"
+
 ### úkoly
 - connect (Dynamicke přidělování adres)
 - discovery (Broadcastem [0xFFF])
