@@ -204,6 +204,12 @@
     <Compile Include="hal\drivers\atmega256rfr2\halUart.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="lib\communication.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\communication.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lib\dhcp.c">
       <SubType>compile</SubType>
     </Compile>
