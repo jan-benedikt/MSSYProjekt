@@ -19,6 +19,6 @@ void dhcp_sendAddress(NWK_DataInd_t prijem){
 	dhcppacket.dstAddr = prijem.srcAddr;
 	dhcppacket.dstEndpoint = 1;
 	unit8_t new_address = FindFreeAddress();
-	dhcppacket.data= new_address();
+	dhcppacket.data= new_address;
 	dhcppacket.confirm();
 }
