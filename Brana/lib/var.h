@@ -9,6 +9,12 @@
 #ifndef VAR_H_
 #define VAR_H_
 
+#include <avr/io.h>
+/*- Includes ---------------------------------------------------------------*/
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
 typedef enum AppState_t
 {
 	APP_STATE_INITIAL,
@@ -25,7 +31,7 @@ typedef struct NWK_DataInd_t
 	uint8_t *data;
 	uint8_t size;
 	uint8_t lqi;
-	int8_t rssi;
+	uint8_t rssi;
 } NWK_DataInd_t;
 
 typedef struct NWK_DataReq_t

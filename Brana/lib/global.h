@@ -9,6 +9,11 @@
 #ifndef GLOBAL_H_
 #define GLOBAL_H_
 
+#include <avr/io.h>
+/*- Includes ---------------------------------------------------------------*/
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 typedef enum device_type
 {
@@ -33,7 +38,7 @@ typedef struct sensor
 	uint8_t id;
 	uint8_t status;
 	device_type type;
-} cidlo;
+} sensor;
 
 
 typedef struct device
@@ -41,8 +46,10 @@ typedef struct device
 	uint8_t id;
 	uint16_t address;
 	sensor sensors[255];
-	int count_sensors=0;
+	int count_sensors;
 } device;
+
+
 
 
 int AddSensorToDevice(sensor sen,device dev);

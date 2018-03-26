@@ -1,4 +1,5 @@
-lib/dhcp.d lib/dhcp.o: ../lib/dhcp.c ../lib/var.h \
+lib/devices_table.d lib/devices_table.o: ../lib/devices_table.c \
+ ../lib/var.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \

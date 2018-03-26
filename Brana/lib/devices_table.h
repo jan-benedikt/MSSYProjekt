@@ -9,10 +9,16 @@
 #ifndef DEVICES_TABLE_H_
 #define DEVICES_TABLE_H_
 
+#include <avr/io.h>
+/*- Includes ---------------------------------------------------------------*/
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
 typedef struct devices_table
 {
-	device devices[255];
-	int devices_count=0;
+	device devices[20];
+	int devices_count;
 } devices_table;
 
 int AddDeviceToTable(device);

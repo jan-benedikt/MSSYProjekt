@@ -58,6 +58,8 @@ C_SRCS +=  \
 ../hal/atmega256rfr2/src/halTimer.c \
 ../hal/drivers/atmega256rfr2/halSleep.c \
 ../hal/drivers/atmega256rfr2/halUart.c \
+../lib/communication.c \
+../lib/devices_table.c \
 ../lib/dhcp.c \
 ../lib/parser.c \
 ../lib/Timers.c \
@@ -89,6 +91,8 @@ hal/atmega256rfr2/src/hal.o \
 hal/atmega256rfr2/src/halTimer.o \
 hal/drivers/atmega256rfr2/halSleep.o \
 hal/drivers/atmega256rfr2/halUart.o \
+lib/communication.o \
+lib/devices_table.o \
 lib/dhcp.o \
 lib/parser.o \
 lib/Timers.o \
@@ -113,6 +117,8 @@ hal/atmega256rfr2/src/hal.o \
 hal/atmega256rfr2/src/halTimer.o \
 hal/drivers/atmega256rfr2/halSleep.o \
 hal/drivers/atmega256rfr2/halUart.o \
+lib/communication.o \
+lib/devices_table.o \
 lib/dhcp.o \
 lib/parser.o \
 lib/Timers.o \
@@ -137,6 +143,8 @@ hal/atmega256rfr2/src/hal.d \
 hal/atmega256rfr2/src/halTimer.d \
 hal/drivers/atmega256rfr2/halSleep.d \
 hal/drivers/atmega256rfr2/halUart.d \
+lib/communication.d \
+lib/devices_table.d \
 lib/dhcp.d \
 lib/parser.d \
 lib/Timers.d \
@@ -161,6 +169,8 @@ hal/atmega256rfr2/src/hal.d \
 hal/atmega256rfr2/src/halTimer.d \
 hal/drivers/atmega256rfr2/halSleep.d \
 hal/drivers/atmega256rfr2/halUart.d \
+lib/communication.d \
+lib/devices_table.d \
 lib/dhcp.d \
 lib/parser.d \
 lib/Timers.d \
@@ -194,6 +204,10 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
 
 
 

@@ -10,6 +10,10 @@ hal\drivers\atmega256rfr2\halSleep.c
 
 hal\drivers\atmega256rfr2\halUart.c
 
+lib\communication.c
+
+lib\devices_table.c
+
 lib\dhcp.c
 
 lib\parser.c

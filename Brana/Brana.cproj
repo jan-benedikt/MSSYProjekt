@@ -210,6 +210,12 @@
     <Compile Include="lib\communication.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="lib\devices_table.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\devices_table.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lib\dhcp.c">
       <SubType>compile</SubType>
     </Compile>
@@ -226,12 +232,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\parser.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="lib\tabulka_zarizeni.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="lib\tabulka_zarizeni.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\Timers.c">

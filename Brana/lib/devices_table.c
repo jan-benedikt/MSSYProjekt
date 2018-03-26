@@ -5,22 +5,30 @@
  *  Author: Jaroslav Hájek
  */
 
-
+#include "var.h"
+#include "global.h"
+#include "devices_table.h"
 
 devices_table BIG_TABLE;
+device null_device;
+
+int init(){
+	
+	null_device.id = -1;
+}
 
 /**
- * [add devicec to table]
+ * [add device to table]
  * @method AddDeviceToTable
  * @param  dev              [device from table]
- * @return                  [int 1:succes, int 0:bad]
+ * @return                  [int 1:success, int 0:bad]
  */
 int AddDeviceToTable(device dev){
-if (BIG_TABLE->devices_count<255)
+if (BIG_TABLE.devices_count<255)
 	{
 
-		BIG_TABLE[BIG_TABLE->devices_count]=dev;
-		BIG_TABLE->devices_count++;
+		BIG_TABLE.devices[BIG_TABLE.devices_count]=dev;
+		BIG_TABLE.devices_count++;
 		return 0;
 	}
 	else
@@ -30,17 +38,18 @@ if (BIG_TABLE->devices_count<255)
 }
 
 /**
- * [try found free addres for device]
+ * [try found free address for device]
  * @method FindFreeAddress
- * @return [uint8_t addres]
+ * @return [uint8_t address]
  */
 uint8_t FindFreeAddress(){
+	uint8_t f = 1;
 	for (int a = 0;a<255;a++)
 	{
-		for(int i =0;i<BIG_TABLE->devices_count;i++)
+		for(int i =0;i<BIG_TABLE.devices_count;i++)
 		{
-			int f = 1;
-			if (BIG_TABLE[i]->address==a)
+			f = 1;
+			if (BIG_TABLE.devices[i].address==a)
 				{
 					f=0;
 				}
@@ -58,9 +67,9 @@ uint8_t FindFreeAddress(){
  * @return            [int position of device, int -1:bad]
  */
 int FindDevice(uint8_t address){
-	for(int i =0;i<BIG_TABLE->devices_count;i++)
+	for(int i =0;i<BIG_TABLE.devices_count;i++)
 	{
-		if (BIG_TABLE[i]->address==address)
+		if (BIG_TABLE.devices[i].address==address)
 			{
 				return i;
 			}
@@ -81,28 +90,28 @@ int FindDevice(uint8_t address){
  * @return           [device from table:succes, null]
  */
 device GetDevice(uint8_t address){
-	tmp=FindDevice(address);
+	int tmp=FindDevice(address);
 	if (tmp!=-1){
-		return BIG_TABLE->devices[tmp];
+		return BIG_TABLE.devices[tmp];
 	}
 	else
-		return null;
+		return null_device;
 }
 
 /*
  * [find position of device in table, remove device from table, resort the table]
  * @method RemoveDeviceFromTable
  * @param  dev                   [device]
- * @return                       [int 1:succes, int 0:bad]
+ * @return                       [int 1:success, int 0:bad]
  */
 int RemoveDeviceFromTable(device dev){
-	position=FindDevice(dev->address);
+	int position=FindDevice(dev.address);
 	if (position!=-1){
-				 			for ( c = position - 1 ; c < BIG_TABLE->devices_count - 1 ; c++ )
-							BIG_TABLE->devices[c] = BIG_TABLE->devices[c+1];
-							BIG_TABLE->devices_count--;
+				 			for (int c = position - 1 ; c < BIG_TABLE.devices_count - 1 ; c++ )
+							BIG_TABLE.devices[c] = BIG_TABLE.devices[c+1];
+							BIG_TABLE.devices_count--;
 							return 0;
 						}
 	return 1;
 	}
-}
+
