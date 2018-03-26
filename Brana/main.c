@@ -35,9 +35,12 @@ typedef enum AppState_t
 
 AppState_t appState = APP_STATE_INITIAL;
 
+static SYS_Timer_t appTimer;
+
 //obsluha prichozich ramcu
 static bool funkceObsluhy (NWK_DataInd_t *ind)
 {
+
 	for (int p = 0;p< ind->size;p++){
 		UART_SendString(ind->data[p]);
 	}
@@ -47,9 +50,29 @@ static bool funkceObsluhy (NWK_DataInd_t *ind)
 	return true;
 }
 
-void appInit(){
-	NWK_OpenEndpoint(APP_ENDPOINT, funkceObsluhy);
+static void appTimerHandler(SYS_Timer_t *timer)
+{
 	send(0x01, 1, 3, 1);
+	(void)timer;
+}
+
+void appInit(){
+	 NWK_SetAddr(APP_ADDR);
+	 NWK_SetPanId(APP_PANID);
+	 PHY_SetChannel(APP_CHANNEL);
+	 #ifdef PHY_AT86RF212
+	 PHY_SetBand(APP_BAND);
+	 PHY_SetModulation(APP_MODULATION);
+	 #endif
+	 PHY_SetRxState(true);
+	
+	NWK_OpenEndpoint(APP_ENDPOINT, funkceObsluhy);
+	
+	  HAL_BoardInit();
+
+	  appTimer.interval = APP_FLUSH_TIMER_INTERVAL;
+	  appTimer.mode = SYS_TIMER_INTERVAL_MODE;
+	  appTimer.handler = appTimerHandler;
 }
 
 static void APP_TaskHandler(void)
@@ -58,7 +81,6 @@ static void APP_TaskHandler(void)
 	{
 		case APP_STATE_INITIAL:
 		{
-			appInit();
 			UART_SendString(appDataReq.data);
 			appState = APP_STATE_IDLE;
 		} break;
@@ -73,6 +95,7 @@ int main(void)
 {	
 	UART_init(9600);
 	SYS_Init();
+	appInit();
 	while (1)
 	{
 		SYS_TaskHandler();
