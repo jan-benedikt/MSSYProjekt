@@ -18,6 +18,7 @@
 #include "sysTimer.h"
 #include "halBoard.h"
 #include "halUart.h"
+#include "lib/UART.h"
 
 /*- Definitions ------------------------------------------------------------*/
 #ifdef NWK_ENABLE_SECURITY
@@ -36,14 +37,19 @@ typedef enum AppState_t
 AppState_t appState = APP_STATE_INITIAL;
 
 //obsluha prichozich ramcu
-static bool funkceObluhy (NWK_DataInd_t *ind)
+static bool funkceObsluhy (NWK_DataInd_t *ind)
 {
-	// obsluha
+	for (int p = 0;p< ind->size;p++){
+		UART_SendString(ind->data[p]);
+	}
+	
+	UART_init(9600);
+	UART_SendString("\r\n");
 	return true;
 }
 
 void appInit(){
-	NWK_OpenEndpoint(APP_ENDPOINT, funkceObluhy);
+	NWK_OpenEndpoint(APP_ENDPOINT, funkceObsluhy);
 }
 
 static void APP_TaskHandler(void)

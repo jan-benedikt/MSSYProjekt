@@ -27,7 +27,7 @@ main.d main.o: .././main.c \
  ../nwk/inc/nwkSecurity.h ../nwk/inc/nwkDataReq.h ../sys/inc/sysTimer.h \
  ../hal/drivers/atmega256rfr2/halBoard.h \
  ../hal/atmega256rfr2/inc/halGpio.h \
- ../hal/drivers/atmega256rfr2/halUart.h
+ ../hal/drivers/atmega256rfr2/halUart.h .././lib/UART.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -106,3 +106,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../hal/atmega256rfr2/inc/halGpio.h:
 
 ../hal/drivers/atmega256rfr2/halUart.h:
+
+.././lib/UART.h:
