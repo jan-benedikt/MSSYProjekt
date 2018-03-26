@@ -219,6 +219,9 @@
     <Compile Include="lib\dhcp.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="lib\dhcp.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lib\frame_data.h">
       <SubType>compile</SubType>
     </Compile>

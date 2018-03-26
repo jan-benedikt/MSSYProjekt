@@ -5,6 +5,6 @@
  *  Author: Benedikt
  */ 
 
-void receive(){
+void parser_prijem(){
 	
 }

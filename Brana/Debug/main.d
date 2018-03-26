@@ -15,7 +15,8 @@ main.d main.o: .././main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\4.9.2\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
- .././config.h ../hal/atmega256rfr2/inc/hal.h ../sys/inc/sysTypes.h \
+ .././config.h .././lib/var.h ../hal/atmega256rfr2/inc/hal.h \
+ ../sys/inc/sysTypes.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\wdt.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h \
@@ -27,7 +28,9 @@ main.d main.o: .././main.c \
  ../nwk/inc/nwkSecurity.h ../nwk/inc/nwkDataReq.h ../sys/inc/sysTimer.h \
  ../hal/drivers/atmega256rfr2/halBoard.h \
  ../hal/atmega256rfr2/inc/halGpio.h \
- ../hal/drivers/atmega256rfr2/halUart.h .././lib/UART.h
+ ../hal/drivers/atmega256rfr2/halUart.h .././lib/UART.h .././lib/dhcp.h \
+ .././lib/var.h .././lib/global.h .././lib/devices_table.h \
+ .././lib/communication.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -62,6 +65,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
 
 .././config.h:
+
+.././lib/var.h:
 
 ../hal/atmega256rfr2/inc/hal.h:
 
@@ -108,3 +113,13 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../hal/drivers/atmega256rfr2/halUart.h:
 
 .././lib/UART.h:
+
+.././lib/dhcp.h:
+
+.././lib/var.h:
+
+.././lib/global.h:
+
+.././lib/devices_table.h:
+
+.././lib/communication.h:

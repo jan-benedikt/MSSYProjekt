@@ -11,14 +11,13 @@
 #include <stdio.h>
 #include <string.h>
 #include "config.h"
-#include "hal.h"
-#include "phy.h"
-#include "sys.h"
-#include "nwk.h"
+#include "lib/var.h"
 #include "sysTimer.h"
 #include "halBoard.h"
 #include "halUart.h"
 #include "lib/UART.h"
+#include "lib/dhcp.h"
+#include "lib/communication.h"
 
 /*- Definitions ------------------------------------------------------------*/
 #ifdef NWK_ENABLE_SECURITY
@@ -50,6 +49,7 @@ static bool funkceObsluhy (NWK_DataInd_t *ind)
 
 void appInit(){
 	NWK_OpenEndpoint(APP_ENDPOINT, funkceObsluhy);
+	send(0x01, 1, 3, 1);
 }
 
 static void APP_TaskHandler(void)
@@ -59,6 +59,7 @@ static void APP_TaskHandler(void)
 		case APP_STATE_INITIAL:
 		{
 			appInit();
+			UART_SendString(appDataReq.data);
 			appState = APP_STATE_IDLE;
 		} break;
 		case APP_STATE_IDLE:
@@ -69,7 +70,8 @@ static void APP_TaskHandler(void)
 }
 
 int main(void)
-{
+{	
+	UART_init(9600);
 	SYS_Init();
 	while (1)
 	{
@@ -77,4 +79,3 @@ int main(void)
 		APP_TaskHandler();
 	}
 }
-
