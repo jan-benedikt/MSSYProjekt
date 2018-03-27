@@ -1,22 +1,22 @@
 # Ignore everything
 *
 
-# But not these files...
+# Ignore
+Brana/Debug/*
+.vs/*
+
+# NON Ignore
+
+!podklady/*
+!ESP/*
+
+!*/Brana/config.h
+!*/Brana/main.c
+!*/Brana/p2p.c
+!*/Brana/Brana.componentinfo.xml
+!*/Brana/Brana.cproj
+!*/Brana/lib/*
+
 !.gitignore
 !README.md
 !Brana.atsln
-# etc...
-
-# ...even if they are in subdirectories
-!*/
-
-# if the files to be tracked are in subdirectories
-!podklady/*
-!ESP/*
-Brana/*
-!Brana/config.h
-!Brana/main.c
-!Brana/p2p.c
-!Brana/Brana.componentinfo.xml
-!Brana/Brana.cproj
-!Brana/lib/
