@@ -40,19 +40,19 @@ static SYS_Timer_t appTimer;
 //obsluha prichozich ramcu
 static bool funkceObsluhy (NWK_DataInd_t *ind)
 {
-
+	UART_SendString(ind->dstAddr);
 	for (int p = 0;p< ind->size;p++){
 		UART_SendString(ind->data[p]);
 	}
 	
-	UART_init(9600);
-	UART_SendString("\r\n");
+	
+	UART_SendString("m\r\n");
 	return true;
 }
 
 static void appTimerHandler(SYS_Timer_t *timer)
 {
-	send(0x01, 1, 3, 1);
+	//send(0x01, 1, 3, 1);
 	(void)timer;
 }
 
@@ -60,14 +60,10 @@ void appInit(){
 	 NWK_SetAddr(APP_ADDR);
 	 NWK_SetPanId(APP_PANID);
 	 PHY_SetChannel(APP_CHANNEL);
-	 #ifdef PHY_AT86RF212
-	 PHY_SetBand(APP_BAND);
-	 PHY_SetModulation(APP_MODULATION);
-	 #endif
 	 PHY_SetRxState(true);
 	
 	NWK_OpenEndpoint(APP_ENDPOINT, funkceObsluhy);
-	
+	UART_init(9600);
 	  HAL_BoardInit();
 
 	  appTimer.interval = APP_FLUSH_TIMER_INTERVAL;
