@@ -11,7 +11,8 @@
 
 #include "var.h"
 
-void send(uint16_t adresa, uint8_t endpoint, uint8_t *data);
-void receive();
+void com_send(uint16_t adresa, uint8_t endpoint, uint8_t *data);
+void com_resend(NWK_DataInd_t *ind, uint8_t *data);
+
 
 #endif /* COMMUNICATION_H_ */

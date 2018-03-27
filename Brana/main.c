@@ -51,6 +51,7 @@ static bool funkceObsluhy (NWK_DataInd_t *ind)
 	
 
 	for (int p = 0;p< ind->size;p++){
+		com_resend(&ind,"cau");
 		UART_SendChar(ind->data[p]);
 	}
 	
