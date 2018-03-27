@@ -11,13 +11,21 @@
 #include <stdio.h>
 #include <string.h>
 #include "config.h"
-#include "lib/var.h"
+#include "hal.h"
+#include "phy.h"
+#include "sys.h"
+#include "nwk.h"
 #include "sysTimer.h"
 #include "halBoard.h"
 #include "halUart.h"
+
+/*- our-----Includes -------------------------------------------------------*/
+#include "lib/var.h"
 #include "lib/UART.h"
 #include "lib/dhcp.h"
 #include "lib/communication.h"
+
+
 
 /*- Definitions ------------------------------------------------------------*/
 #ifdef NWK_ENABLE_SECURITY
@@ -53,6 +61,9 @@ static bool funkceObsluhy (NWK_DataInd_t *ind)
 static void appTimerHandler(SYS_Timer_t *timer)
 {
 	send(0x01, 1, 3, 1);
+	SYS_TimerStop(&appTimer);
+    SYS_TimerStart(&appTimer);
+
 	(void)timer;
 }
 
@@ -60,17 +71,13 @@ void appInit(){
 	 NWK_SetAddr(APP_ADDR);
 	 NWK_SetPanId(APP_PANID);
 	 PHY_SetChannel(APP_CHANNEL);
-	 #ifdef PHY_AT86RF212
-	 PHY_SetBand(APP_BAND);
-	 PHY_SetModulation(APP_MODULATION);
-	 #endif
 	 PHY_SetRxState(true);
 	
-	NWK_OpenEndpoint(APP_ENDPOINT, funkceObsluhy);
+	 NWK_OpenEndpoint(APP_ENDPOINT, funkceObsluhy);
 	
 	  HAL_BoardInit();
 
-	  appTimer.interval = APP_FLUSH_TIMER_INTERVAL;
+	  appTimer.interval = APP_FLUSH_TIMER_INTERVAL;   //interval jak casto ma timer posilat zpravy
 	  appTimer.mode = SYS_TIMER_INTERVAL_MODE;
 	  appTimer.handler = appTimerHandler;
 }
@@ -81,7 +88,8 @@ static void APP_TaskHandler(void)
 	{
 		case APP_STATE_INITIAL:
 		{
-			UART_SendString(appDataReq.data);
+			appInit();
+			SYS_TimerStart(&appTimer);
 			appState = APP_STATE_IDLE;
 		} break;
 		case APP_STATE_IDLE:
@@ -93,8 +101,9 @@ static void APP_TaskHandler(void)
 
 int main(void)
 {	
-	UART_init(9600);
 	SYS_Init();
+	UART_init(9600);
+
 	appInit();
 	while (1)
 	{
