@@ -7,7 +7,11 @@
 
 #include "communication.h"
 
-void send(uint16_t adresa, uint8_t endpoint, uint8_t *data, uint8_t delka){
+void send(uint16_t adresa, uint8_t endpoint, uint8_t *data){
+	char delka;
+	
+	for(delka = 0; data[delka] != '\0'; ++delka);
+	
 	appDataReq.dstAddr = adresa;
 	appDataReq.dstEndpoint = endpoint;
 	appDataReq.srcEndpoint = endpoint;
