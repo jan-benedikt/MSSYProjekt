@@ -48,19 +48,20 @@ static SYS_Timer_t appTimer;
 //obsluha prichozich ramcu
 static bool funkceObsluhy (NWK_DataInd_t *ind)
 {
+	
 
 	for (int p = 0;p< ind->size;p++){
-		UART_SendString(ind->data[p]);
+		UART_SendChar(ind->data[p]);
 	}
 	
-	UART_init(9600);
+	
 	UART_SendString("\r\n");
 	return true;
 }
 
 static void appTimerHandler(SYS_Timer_t *timer)
 {
-	send(0x01, 1, "test");
+//	send(0x01, 1, "test");
 	SYS_TimerStop(&appTimer);
     SYS_TimerStart(&appTimer);
 
