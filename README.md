@@ -58,7 +58,7 @@ vsechny nastaveni pujdou souboru  do [config.h](./Brana/config.h)
 ### UML
 ![Alt text](./podklady/diagramy/device_table.png)
 
-### nase DHCP
+### nase DHCP (bude jinak)
 
 ![Alt text](./podklady/diagramy/dhcp.png)
 
