@@ -54,7 +54,7 @@
 #define APP_PANID                 0x4567
 #define APP_ENDPOINT              1
 #define APP_SECURITY_KEY          "TestSecurityKey0"
-#define APP_FLUSH_TIMER_INTERVAL  20
+#define APP_FLUSH_TIMER_INTERVAL  2000
 
 #ifdef PHY_AT86RF212
   #define APP_CHANNEL             0x01
