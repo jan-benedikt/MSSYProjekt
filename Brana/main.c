@@ -19,9 +19,6 @@
 #include "halBoard.h"
 #include "halUart.h"
 
-
-
-
 /*- our-----Includes -------------------------------------------------------*/
 #include "lib/var.h"
 #include "lib/UART.h"
@@ -29,6 +26,8 @@
 #include "lib/communication.h"
 #include "lib/queue.h"
 #include "lib/queue.h"
+
+
 
 
 /*- Definitions ------------------------------------------------------------*/
@@ -78,7 +77,9 @@ static bool funkceObsluhy (NWK_DataInd_t *ind)
 
 static void appTimerHandler(SYS_Timer_t *timer)
 {
-//	send(0x01, 1, "test");
+
+  //send(0x01, 1, "test");
+
 	SYS_TimerStop(&appTimer);
     SYS_TimerStart(&appTimer);
 
@@ -121,7 +122,9 @@ int main(void)
 {	
 	SYS_Init();
 	UART_init(9600);
+
 	QUEUE_init(*FRONTA);
+
 
 	appInit();
 	while (1)
