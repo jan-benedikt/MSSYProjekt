@@ -19,12 +19,16 @@
 #include "halBoard.h"
 #include "halUart.h"
 
+
+
+
 /*- our-----Includes -------------------------------------------------------*/
 #include "lib/var.h"
 #include "lib/UART.h"
 #include "lib/dhcp.h"
 #include "lib/communication.h"
-
+#include "lib/queue.h"
+#include "lib/queue.h"
 
 
 /*- Definitions ------------------------------------------------------------*/
@@ -48,17 +52,29 @@ static SYS_Timer_t appTimer;
 //obsluha prichozich ramcu
 static bool funkceObsluhy (NWK_DataInd_t *ind)
 {
+		int cislo = ind->srcAddr;
+		char buffer[3] = "000";
+		sprintf (buffer,"%d",cislo);
 	
+		UART_SendString("from :0x");
+		UART_SendString(buffer);
+		
 
+		
+		UART_SendString("| data :");
 	for (int p = 0;p< ind->size;p++){
-		com_resend(&ind,"cau");
+		
 		UART_SendChar(ind->data[p]);
 	}
-	
+	com_reply(ind,"cau");
 	
 	UART_SendString("\r\n");
 	return true;
 }
+
+
+
+
 
 static void appTimerHandler(SYS_Timer_t *timer)
 {
@@ -105,10 +121,12 @@ int main(void)
 {	
 	SYS_Init();
 	UART_init(9600);
+	QUEUE_init(*FRONTA);
 
 	appInit();
 	while (1)
-	{
+	{ 
+		QUEUE_send_last();
 		SYS_TaskHandler();
 		APP_TaskHandler();
 	}
