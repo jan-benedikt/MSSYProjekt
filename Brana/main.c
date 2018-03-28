@@ -24,7 +24,7 @@
 #include "lib/UART.h"
 #include "lib/dhcp.h"
 #include "lib/communication.h"
-//#include "lib/queue.h"
+#include "lib/queue.h"
 
 
 

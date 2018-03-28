@@ -20,10 +20,28 @@ static void appDataConf(NWK_DataReq_t *req)
 }
 
 void com_send(uint16_t adresa, uint8_t endpoint, uint8_t *data){
-	char delka;
+	volatile int delka;
 	
-	for(delka = 0; data[delka] != '\0'; ++delka);
+	//for(delka = 0; data[delka] != '\0'; ++delka);
+	delka=strlen(data);
 	
+	appDataReq.dstAddr = adresa;
+	appDataReq.dstEndpoint = endpoint;
+	appDataReq.srcEndpoint = endpoint;
+	appDataReq.data = data;
+	appDataReq.size = delka;
+	NWK_DataReq(&appDataReq);
+}
+
+void com_debug_send_hello(uint16_t adresa, uint8_t endpoint, uint8_t *data){
+	volatile int delka;
+	
+	uint8_t device_id = 128; //HELLO
+	uint8_t device_typ = B(00010010); //typ
+	uint8_t pocet[] = temperature; //typ
+	
+	
+	delka=strlen(data);
 	appDataReq.dstAddr = adresa;
 	appDataReq.dstEndpoint = endpoint;
 	appDataReq.srcEndpoint = endpoint;
