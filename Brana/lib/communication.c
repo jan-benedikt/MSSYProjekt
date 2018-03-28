@@ -10,7 +10,9 @@
 static void appDataConf(NWK_DataReq_t *req)
 {
 	if (NWK_SUCCESS_STATUS == req->status)
-	{QUEUE_rm_last();}
+	{
+		//QUEUE_rm_last();
+	}
 	else
 	{int a;}
 	
@@ -42,7 +44,7 @@ void com_reply(NWK_DataInd_t *ind, uint8_t *data){
 	appDataReq.data = data;
 	appDataReq.size = delka;
 	appDataReq.confirm= appDataConf;
-	QUEUE_add(&appDataReq);
-	//NWK_DataReq(&appDataReq);
+	//QUEUE_add(&appDataReq);
+	NWK_DataReq(&appDataReq);
 	
 }
