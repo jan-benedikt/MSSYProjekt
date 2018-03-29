@@ -18,6 +18,8 @@
 #include "phy.h"
 #include "sys.h"
 #include "nwk.h"
+#include "MACROS.h"
+#include "frame_data.h"
 
 static NWK_DataReq_t appDataReq;
 

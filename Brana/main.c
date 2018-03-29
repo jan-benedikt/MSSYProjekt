@@ -25,7 +25,7 @@
 #include "lib/dhcp.h"
 #include "lib/communication.h"
 #include "lib/queue.h"
-#include "lib/queue.h"
+
 
 
 
@@ -65,7 +65,7 @@ static bool funkceObsluhy (NWK_DataInd_t *ind)
 		
 		UART_SendChar(ind->data[p]);
 	}
-	com_reply(ind,"cau");
+	//com_reply(ind,"cau");
 	
 	UART_SendString("\r\n");
 	return true;
@@ -78,8 +78,8 @@ static bool funkceObsluhy (NWK_DataInd_t *ind)
 static void appTimerHandler(SYS_Timer_t *timer)
 {
 
-  //send(0x01, 1, "test");
-
+   //com_debug_send_hello(0,1);
+   com_send(0,1,(uint8_t) 2);
 	SYS_TimerStop(&appTimer);
     SYS_TimerStart(&appTimer);
 
@@ -123,13 +123,13 @@ int main(void)
 	SYS_Init();
 	UART_init(9600);
 
-	QUEUE_init(*FRONTA);
+	//QUEUE_init(*FRONTA);
 
 
 	appInit();
 	while (1)
 	{ 
-		QUEUE_send_last();
+		//QUEUE_send_last();
 		SYS_TaskHandler();
 		APP_TaskHandler();
 	}
