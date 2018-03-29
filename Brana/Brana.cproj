@@ -237,6 +237,12 @@
     <Compile Include="lib\parser.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="lib\queue.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\queue.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lib\Timers.c">
       <SubType>compile</SubType>
     </Compile>
