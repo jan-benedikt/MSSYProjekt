@@ -31,4 +31,17 @@
 #define LED3OFF sbi(PORTE,3)
 #define LED3CHANGE xbi(PORTE,3)
 
+#define B(x) S_to_binary_(#x)
+
+static inline unsigned long long S_to_binary_(const char *s)
+{
+	unsigned long long i = 0;
+	while (*s) {
+		i <<= 1;
+		i += *s++ - '0';
+	}
+	return i;
+}
+
+
 #endif /* MACROS_H_ */
