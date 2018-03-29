@@ -19,14 +19,15 @@
 #include "halBoard.h"
 #include "halUart.h"
 
+
+
+
 /*- our-----Includes -------------------------------------------------------*/
 #include "lib/var.h"
 #include "lib/UART.h"
 #include "lib/dhcp.h"
 #include "lib/communication.h"
 #include "lib/queue.h"
-
-
 
 
 
@@ -122,6 +123,7 @@ int main(void)
 {	
 	SYS_Init();
 	UART_init(9600);
+	QUEUE_init(*FRONTA);
 
 	//QUEUE_init(*FRONTA);
 
