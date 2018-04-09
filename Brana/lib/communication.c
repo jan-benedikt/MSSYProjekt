@@ -44,21 +44,21 @@ void com_debug_send_hello(uint16_t adresa, uint8_t endpoint){
 	volatile uint8_t device_sleep = 0;
 	volatile uint8_t device_read = 1;
 	volatile uint8_t device_write = 0;
+
+	static HELLO_PACK_t packet;
 	
-	data[0] = device_id;
-	data[1] = device_typ;
-	//data[2] = device_pocet;
-	data[2] = device_sleep;
-	data[3] = device_read;
-	data[4] = device_write;
+	packet.ID = device_id;
+	packet.TYP =  device_typ;
+	packet.spanek =  device_sleep;
+	packet.r_w =  device_sleep;
+	packet.spanek =  device_sleep;
+	packet.DATA =  device_id;
 	
-	
-	
-	delka=sizeof(data)*8;
+	delka=56;
 	appDataReq.dstAddr = adresa;
 	appDataReq.dstEndpoint = endpoint;
 	appDataReq.srcEndpoint = endpoint;
-	appDataReq.data = data;
+	appDataReq.data = &packet;
 	appDataReq.size = delka;
 	NWK_DataReq(&appDataReq);
 }
