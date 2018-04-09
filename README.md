@@ -58,9 +58,9 @@ vsechny nastaveni pujdou souboru  do [config.h](./Brana/config.h)
 ### UML
 ![Alt text](./podklady/diagramy/device_table.png)
 
-### nase DHCP
+### nase workflow
 
-![Alt text](./podklady/diagramy/dhcp.png)
+![Alt text](./podklady/diagramy/full.png)
 
 
 app_addr -> nastavení adresy 
