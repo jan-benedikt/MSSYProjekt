@@ -231,12 +231,6 @@
     <Compile Include="lib\MACROS.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="lib\parser.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="lib\parser.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="lib\Timers.c">
       <SubType>compile</SubType>
     </Compile>

@@ -99,6 +99,8 @@ typedef struct PACK
 	uint16_t reserved;
 }HELLO_ACK_t;
 
+#define HELLO_ACK_t_size 56
+
 typedef struct PACK
 {
 	uint8_t ID;

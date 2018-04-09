@@ -63,17 +63,13 @@ void com_debug_send_hello(uint16_t adresa, uint8_t endpoint){
 	NWK_DataReq(&appDataReq);
 }
 
-void com_reply(NWK_DataInd_t *ind, uint8_t *data){
-	volatile int delka;
-	
-	//for(delka = 0; data[delka] != '\0'; ++delka);
-	delka=strlen(data);
-	
+void com_reply(NWK_DataInd_t *ind, uint8_t *data, int size){
+
 	appDataReq.dstAddr = ind->srcAddr;
 	appDataReq.dstEndpoint = ind->srcEndpoint;
 	appDataReq.srcEndpoint = ind->dstEndpoint;
 	appDataReq.data = data;
-	appDataReq.size = delka;
+	appDataReq.size = size;
 	appDataReq.confirm= appDataConf;
 	//QUEUE_add(&appDataReq);
 	NWK_DataReq(&appDataReq);
