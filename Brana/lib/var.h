@@ -25,6 +25,6 @@ static NWK_DataReq_t appDataReq;
 
 static void appDataConf(NWK_DataReq_t *req);
  NWK_DataReq_t *FRONTA;
- int QUEUE_size;
+ //int QUEUE_size;
 
 #endif /* VAR_H_ */

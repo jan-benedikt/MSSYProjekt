@@ -37,26 +37,20 @@ void com_send(uint16_t adresa, uint8_t endpoint, uint8_t *data){
 void com_debug_send_hello(uint16_t adresa, uint8_t endpoint){
 	volatile int delka;
 	
-	volatile uint8_t data[40];
+	volatile uint8_t data[5];
 	
-	uint8_t device_id = 128; //HELLO
-	uint8_t device_typ = B(00010010); //typ
-	uint8_t device_pocet[1]; //typ
-	
-	for(int k = 0;k<sizeof(device_pocet);k++){
-		device_pocet[1] =k+1;
-	}
-	uint8_t device_sleep = 0;
-	
-	uint8_t device_read = 1;
-	uint8_t device_write = 0;
+	volatile uint8_t device_id = 128; //HELLO
+	volatile uint8_t device_typ = B(00010010); //typ
+	volatile uint8_t device_sleep = 0;
+	volatile uint8_t device_read = 1;
+	volatile uint8_t device_write = 0;
 	
 	data[0] = device_id;
-	data[8] = device_typ;
-//	data[2] = device_pocet;
-	data[16] = device_sleep;
-	data[32] = device_read;
-	data[64] = device_write;
+	data[1] = device_typ;
+	//data[2] = device_pocet;
+	data[2] = device_sleep;
+	data[3] = device_read;
+	data[4] = device_write;
 	
 	
 	

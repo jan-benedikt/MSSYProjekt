@@ -27,8 +27,6 @@
 #include "lib/UART.h"
 #include "lib/dhcp.h"
 #include "lib/communication.h"
-#include "lib/queue.h"
-
 
 
 /*- Definitions ------------------------------------------------------------*/
@@ -79,8 +77,8 @@ static bool funkceObsluhy (NWK_DataInd_t *ind)
 static void appTimerHandler(SYS_Timer_t *timer)
 {
 
-   //com_debug_send_hello(0,1);
-   com_send(0,1,(uint8_t) 2);
+   com_debug_send_hello(0,1);
+   //com_send(0,1,(uint8_t) 2);
 	SYS_TimerStop(&appTimer);
     SYS_TimerStart(&appTimer);
 
@@ -123,7 +121,7 @@ int main(void)
 {	
 	SYS_Init();
 	UART_init(9600);
-	QUEUE_init(*FRONTA);
+	//QUEUE_init(*FRONTA);
 
 	//QUEUE_init(*FRONTA);
 
