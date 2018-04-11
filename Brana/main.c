@@ -24,6 +24,7 @@
 #include "lib/UART.h"
 #include "lib/dhcp.h"
 #include "lib/communication.h"
+#include "lib/endpoint_service.h"
 
 /*- Definitions ------------------------------------------------------------*/
 #ifdef NWK_ENABLE_SECURITY
@@ -60,10 +61,10 @@ void appInit(){
 	 PHY_SetChannel(APP_CHANNEL);
 	 PHY_SetRxState(true);
 	
-	 NWK_OpenEndpoint(1, endpointHandler1());
-	 NWK_OpenEndpoint(2, endpointHandler2());
-	 NWK_OpenEndpoint(3, endpointHandler3());
-	 NWK_OpenEndpoint(4, endpointHandler4());
+	 NWK_OpenEndpoint(1, endpointHandler1);
+	 NWK_OpenEndpoint(2, endpointHandler2);
+	 NWK_OpenEndpoint(3, endpointHandler3);
+	 NWK_OpenEndpoint(4, endpointHandler4);
 	
 	 HAL_BoardInit();
 

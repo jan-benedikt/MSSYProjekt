@@ -13,9 +13,9 @@
  * @param  prijem           [NWK_DataInd_t packet po prijeti]
  */
 void dhcp_sendAddress(NWK_DataInd_t *receive){
-	HELLO_PACK_t test;
+	HELLO_PACK_t *test;
 	//NWK_DataInd_t newreceive = receive;
-	memcpy(&test, receive->data, receive->size);
+	memcpy(test, &receive->data, receive->size);
 	static HELLO_ACK_t hello_ack;
 	hello_ack.ADRESA = 0xff;
 	hello_ack.ID = 0x00;

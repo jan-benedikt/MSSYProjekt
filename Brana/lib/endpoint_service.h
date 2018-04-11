@@ -9,9 +9,11 @@
 #ifndef ENDPOINT_SERVICE_H_
 #define ENDPOINT_SERVICE_H_
 
-static bool endpointHandler1 (NWK_DataInd_t *ind);
-static bool endpointHandler2 (NWK_DataInd_t *ind);
-static bool endpointHandler3 (NWK_DataInd_t *ind);
-static bool endpointHandler4 (NWK_DataInd_t *ind);
+#include "lib/var.h"
+
+bool endpointHandler1 (NWK_DataInd_t *ind);
+bool endpointHandler2 (NWK_DataInd_t *ind);
+bool endpointHandler3 (NWK_DataInd_t *ind);
+bool endpointHandler4 (NWK_DataInd_t *ind);
 
 #endif /* ENDPOINT_SERVICE_H_ */

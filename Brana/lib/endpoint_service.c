@@ -7,7 +7,7 @@
 
 #include "endpoint_service.h"
 
-static bool endpointHandler1 (NWK_DataInd_t *ind)
+bool endpointHandler1 (NWK_DataInd_t *ind)
 {
 	int cislo = ind->srcAddr;
 	char buffer[3] = "000";
@@ -30,7 +30,7 @@ static bool endpointHandler1 (NWK_DataInd_t *ind)
 	return true;
 }
 
-static bool endpointHandler2 (NWK_DataInd_t *ind)
+bool endpointHandler2 (NWK_DataInd_t *ind)
 {
 	int cislo = ind->srcAddr;
 	char buffer[3] = "000";
@@ -53,7 +53,7 @@ static bool endpointHandler2 (NWK_DataInd_t *ind)
 	return true;
 }
 
-static bool endpointHandler3 (NWK_DataInd_t *ind)
+bool endpointHandler3 (NWK_DataInd_t *ind)
 {
 	int cislo = ind->srcAddr;
 	char buffer[3] = "000";
@@ -76,7 +76,7 @@ static bool endpointHandler3 (NWK_DataInd_t *ind)
 	return true;
 }
 
-static bool endpointHandler4 (NWK_DataInd_t *ind)
+bool endpointHandler4 (NWK_DataInd_t *ind)
 {
 	int cislo = ind->srcAddr;
 	char buffer[3] = "000";
