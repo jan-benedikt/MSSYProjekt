@@ -19,7 +19,7 @@ static void appDataConf(NWK_DataReq_t *req)
 
 }
 
-void com_send(uint16_t adresa, uint8_t endpoint, uint8_t *data){
+void com_send(uint16_t adresa, uint8_t endpoint, uint8_t *data, int size){
 	volatile int delka;
 	
 	//for(delka = 0; data[delka] != '\0'; ++delka);
@@ -30,7 +30,7 @@ void com_send(uint16_t adresa, uint8_t endpoint, uint8_t *data){
 	appDataReq.dstEndpoint = endpoint;
 	appDataReq.srcEndpoint = endpoint;
 	appDataReq.data = data;
-	appDataReq.size = delka;
+	appDataReq.size = size;
 	NWK_DataReq(&appDataReq);
 }
 

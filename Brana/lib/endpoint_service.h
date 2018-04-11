@@ -9,7 +9,7 @@
 #ifndef ENDPOINT_SERVICE_H_
 #define ENDPOINT_SERVICE_H_
 
-#include "lib/var.h"
+#include "var.h"
 
 bool endpointHandler1 (NWK_DataInd_t *ind);
 bool endpointHandler2 (NWK_DataInd_t *ind);
