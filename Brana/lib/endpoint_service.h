@@ -12,5 +12,6 @@
 static bool endpointHandler1 (NWK_DataInd_t *ind);
 static bool endpointHandler2 (NWK_DataInd_t *ind);
 static bool endpointHandler3 (NWK_DataInd_t *ind);
+static bool endpointHandler4 (NWK_DataInd_t *ind);
 
 #endif /* ENDPOINT_SERVICE_H_ */
