@@ -19,14 +19,12 @@
 #include "halBoard.h"
 #include "halUart.h"
 
-
-
-
 /*- our-----Includes -------------------------------------------------------*/
 #include "lib/var.h"
 #include "lib/UART.h"
 #include "lib/dhcp.h"
 #include "lib/communication.h"
+#include "lib/endpoint_service.h"
 
 
 /*- Definitions ------------------------------------------------------------*/

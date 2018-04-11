@@ -222,6 +222,12 @@
     <Compile Include="lib\dhcp.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="lib\endpoint_service.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\endpoint_service.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lib\frame_data.h">
       <SubType>compile</SubType>
     </Compile>
