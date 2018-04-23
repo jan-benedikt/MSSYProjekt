@@ -15,7 +15,7 @@ bool endpointHandler1 (NWK_DataInd_t *ind)
 	
 	UART_SendString("from :0x");
 	UART_SendString(buffer);
-	
+
 	dhcp_sendAddress(ind);
 	
 	UART_SendString(HELLO_ACK_t_size);
