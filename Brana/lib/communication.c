@@ -20,12 +20,8 @@ static void appDataConf(NWK_DataReq_t *req)
 }
 
 void com_send(uint16_t adresa, uint8_t endpoint, uint8_t *data, int size){
-	volatile int delka;
-	
-	//for(delka = 0; data[delka] != '\0'; ++delka);
-	delka=strlen(data);
-	delka =8;
-	
+
+	static NWK_DataReq_t appDataReq;
 	appDataReq.dstAddr = adresa;
 	appDataReq.dstEndpoint = endpoint;
 	appDataReq.srcEndpoint = endpoint;
@@ -55,12 +51,15 @@ void com_debug_send_hello(uint16_t adresa, uint8_t endpoint){
 	packet.DATA =  device_id;
 	
 	delka=56;
-	appDataReq.dstAddr = adresa;
-	appDataReq.dstEndpoint = endpoint;
-	appDataReq.srcEndpoint = endpoint;
-	appDataReq.data = &packet;
-	appDataReq.size = delka;
-	NWK_DataReq(&appDataReq);
+	
+	com_send(adresa,1,&packet,delka);
+	
+	//appDataReq.dstAddr = adresa;
+	//appDataReq.dstEndpoint = endpoint;
+	//appDataReq.srcEndpoint = endpoint;
+	//appDataReq.data = &packet;
+	//appDataReq.size = delka;
+	//NWK_DataReq(&appDataReq);
 }
 
 void com_reply(NWK_DataInd_t *ind, uint8_t *data, int size){
