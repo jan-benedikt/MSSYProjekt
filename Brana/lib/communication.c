@@ -40,8 +40,6 @@ void com_debug_send_hello(uint16_t adresa, uint8_t endpoint){
 	volatile uint8_t device_sleep = 0;
 	volatile uint8_t device_read = 1;
 	volatile uint8_t device_write = 0;
-
-	static HELLO_PACK_t packet;
 	
 	packet.ID = device_id;
 	packet.TYP =  device_typ;

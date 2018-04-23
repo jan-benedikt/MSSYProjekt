@@ -130,3 +130,7 @@ typedef struct PACK
  //int QUEUE_size;
 
 #endif /* VAR_H_ */
+
+
+static HELLO_ACK_t hello_ack;
+static HELLO_PACK_t packet;
