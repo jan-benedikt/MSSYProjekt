@@ -19,17 +19,12 @@
 #include "halBoard.h"
 #include "halUart.h"
 
-
-
-
 /*- our-----Includes -------------------------------------------------------*/
 #include "lib/var.h"
 #include "lib/UART.h"
 #include "lib/dhcp.h"
 #include "lib/communication.h"
-#include "lib/queue.h"
-
-
+#include "lib/endpoint_service.h"
 
 /*- Definitions ------------------------------------------------------------*/
 #ifdef NWK_ENABLE_SECURITY
@@ -49,38 +44,11 @@ AppState_t appState = APP_STATE_INITIAL;
 
 static SYS_Timer_t appTimer;
 
-//obsluha prichozich ramcu
-static bool funkceObsluhy (NWK_DataInd_t *ind)
-{
-		int cislo = ind->srcAddr;
-		char buffer[3] = "000";
-		sprintf (buffer,"%d",cislo);
-	
-		UART_SendString("from :0x");
-		UART_SendString(buffer);
-		
-
-		
-		UART_SendString("| data :");
-	for (int p = 0;p< ind->size;p++){
-		
-		UART_SendChar(ind->data[p]);
-	}
-	//com_reply(ind,"cau");
-	
-	UART_SendString("\r\n");
-	return true;
-}
-
-
-
-
-
 static void appTimerHandler(SYS_Timer_t *timer)
 {
 
-   //com_debug_send_hello(0,1);
-   com_send(0,1,(uint8_t) 2);
+   // com_debug_send_hello(1,1);
+   //com_send(0,1,(uint8_t) 2);
 	SYS_TimerStop(&appTimer);
     SYS_TimerStart(&appTimer);
 
@@ -93,13 +61,16 @@ void appInit(){
 	 PHY_SetChannel(APP_CHANNEL);
 	 PHY_SetRxState(true);
 	
-	 NWK_OpenEndpoint(APP_ENDPOINT, funkceObsluhy);
+	 NWK_OpenEndpoint(1, endpointHandler1);
+	 NWK_OpenEndpoint(2, endpointHandler2);
+	 NWK_OpenEndpoint(3, endpointHandler3);
+	 NWK_OpenEndpoint(4, endpointHandler4);
 	
-	  HAL_BoardInit();
+	 HAL_BoardInit();
 
-	  appTimer.interval = APP_FLUSH_TIMER_INTERVAL;   //interval jak casto ma timer posilat zpravy
-	  appTimer.mode = SYS_TIMER_INTERVAL_MODE;
-	  appTimer.handler = appTimerHandler;
+	 appTimer.interval = APP_FLUSH_TIMER_INTERVAL;   //interval jak casto ma timer posilat zpravy
+	 appTimer.mode = SYS_TIMER_INTERVAL_MODE;
+	 appTimer.handler = appTimerHandler;
 }
 
 static void APP_TaskHandler(void)
@@ -123,7 +94,7 @@ int main(void)
 {	
 	SYS_Init();
 	UART_init(9600);
-	QUEUE_init(*FRONTA);
+	//QUEUE_init(*FRONTA);
 
 	//QUEUE_init(*FRONTA);
 

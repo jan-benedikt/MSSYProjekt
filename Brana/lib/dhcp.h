@@ -13,6 +13,6 @@
 #include "global.h"
 #include "devices_table.h"
 
-void dhcp_sendAddress(NWK_DataInd_t *prijem);
+void dhcp_sendAddress(NWK_DataInd_t *receive);
 
 #endif /* DHCP_H_ */

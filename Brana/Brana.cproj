@@ -222,6 +222,12 @@
     <Compile Include="lib\dhcp.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="lib\endpoint_service.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\endpoint_service.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="lib\frame_data.h">
       <SubType>compile</SubType>
     </Compile>
@@ -229,18 +235,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\MACROS.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="lib\parser.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="lib\parser.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="lib\queue.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="lib\queue.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\Timers.c">
