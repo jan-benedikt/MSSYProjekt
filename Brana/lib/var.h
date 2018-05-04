@@ -5,7 +5,6 @@
  *  Author: Student
  */
 
-
 #ifndef VAR_H_
 #define VAR_H_
 /************************************************************************/
@@ -123,10 +122,45 @@ typedef struct PACK
 	uint16_t reserved;
 }SLEEP_ACK_t;
 
-
-
-
  NWK_DataReq_t *FRONTA;
  //int QUEUE_size;
+ 
+ 	TEPLOTA, 		   //float
+	TLAK,					 //float
+	VLHKOST,   		 //float
+	BINARNI_VSTUP, //uint8_t
+	BINARNI_VYSTUP, //uint8_t
+	RELATIVNI_HODNOTA, //uint8_t
+	OSVETLENI,	//uint8_t
+	TEXT,	//string
+	OBECNY_BYTE,	//uint8_t
+	OBECNY_INTEGER,	//uint8_t
+	OBECNY_FLOAT,	//uint8_t
+	PRIKAZ,	//string
+} device_type;
+
+
+
+typedef struct sensor
+{
+	uint8_t id;
+	uint8_t status;
+	device_type type;
+} sensor;
+
+
+typedef struct device
+{
+	uint8_t id;
+	uint16_t address;
+	sensor sensors[255];
+	int count_sensors;
+} device;
+
+int AddSensorToDevice(sensor sen,device dev);
 
 #endif /* VAR_H_ */
+
+
+static HELLO_ACK_t hello_ack;
+static HELLO_PACK_t packet;

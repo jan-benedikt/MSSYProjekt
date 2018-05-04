@@ -49,21 +49,6 @@ typedef struct device
 	int count_sensors;
 } device;
 
-
-
-
 int AddSensorToDevice(sensor sen,device dev);
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif /* GLOBAL_H_ */
